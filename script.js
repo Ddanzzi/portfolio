@@ -1,3 +1,88 @@
+/* =========================================================
+   PAINEL DOS SEUS PROJETOS
+   ---------------------------------------------------------
+   Para trocar um projeto, edite SOMENTE esta lista.
+
+   image = imagem principal do projeto
+   video = vídeo opcional (deixe "" se não tiver)
+   title = nome do projeto
+   category = tipo do trabalho
+   year = ano
+   link = link opcional (deixe "#" se não tiver)
+
+   Arquivos recomendados:
+   assets/projetos/nome-do-projeto.jpg
+   assets/projetos/nome-do-projeto.mp4
+   ========================================================= */
+
+const PROJECTS = [
+  {
+    title: "@jpd.mkt",
+    category: "Identidade visual & direção criativa",
+    year: "2026",
+    image: "assets/projetos/Primeira foto.png",
+    video: "",
+    link: "https://www.instagram.com/jpd.mkt09/"
+  },
+  {
+    title: "Edição de Vídeo",
+    category: "Conteúdo & design digital",
+    year: "2026",
+    image: "assets/projetos/ediçao.png",
+    video: "",
+    link: "#"
+  },
+  {
+    title: "Digital Experience",
+    category: "UI design & front-end",
+    year: "2026",
+    image: "assets/projetos/bastidores.png",
+    video: "",
+    link: "#"
+  }
+];
+
+const projectsContainer = document.querySelector(".projects");
+
+if (projectsContainer) {
+  projectsContainer.innerHTML = PROJECTS.map((project, index) => {
+    const media = project.video
+      ? `<video class="project-media-video" src="${project.video}" poster="${project.image}" muted loop playsinline preload="metadata"></video>`
+      : `<img class="project-media-image" src="${project.image}" alt="${project.title}" loading="lazy">`;
+
+    return `
+      <article class="project ${index === 0 ? "project-large" : ""} reveal">
+        <a href="${project.link || "#"}" ${project.link && project.link !== "#" ? 'target="_blank" rel="noopener"' : ""}>
+          <div class="project-art project-media">
+            ${media}
+            <small>${project.category.toUpperCase()} / ${project.year}</small>
+            ${project.video ? '<span class="project-video-badge">VIDEO ↗</span>' : ""}
+          </div>
+          <div class="project-meta">
+            <div>
+              <h3>${project.title}</h3>
+              <p>${project.category}</p>
+            </div>
+            <b>↗</b>
+          </div>
+        </a>
+      </article>
+    `;
+  }).join("");
+
+  // Vídeos dos projetos começam a tocar ao passar o mouse.
+  projectsContainer.querySelectorAll(".project").forEach(project => {
+    const video = project.querySelector("video");
+    if (!video) return;
+
+    project.addEventListener("mouseenter", () => video.play().catch(() => {}));
+    project.addEventListener("mouseleave", () => {
+      video.pause();
+      video.currentTime = 0;
+    });
+  });
+}
+
 const menu = document.querySelector(".menu");
 const nav = document.querySelector(".nav-links");
 menu?.addEventListener("click", () => nav.classList.toggle("open"));

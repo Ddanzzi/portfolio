@@ -48,3 +48,27 @@ button{font:inherit}
 }
 @media(max-width:500px){.hero h1{font-size:54px}.hero-visual{height:350px}.orbit-1{width:260px;height:260px}.orbit-2{width:195px;height:195px}.visual-center{width:145px;height:145px}.monogram{font-size:45px}.card-a{top:30px;right:0}.card-b{left:0;bottom:55px}.card-c{right:0;bottom:20px}.service{grid-template-columns:35px 30px 1fr 20px}.service-icon{font-size:18px}.service h3{font-size:16px}.service p{font-size:10px}.numbers strong{font-size:29px}.numbers div{padding-left:12px}}
 @media(pointer:coarse){.cursor,.cursor-dot{display:none}}
+
+/* ===== MÍDIA DOS PROJETOS — editável pelo PROJECTS no script.js ===== */
+.project-media { background:#090909; }
+.project-media-image,
+.project-media-video {
+  position:absolute; inset:0; width:100%; height:100%;
+  object-fit:cover; display:block;
+  transition:transform .7s cubic-bezier(.2,.7,0,1),filter .5s ease;
+  z-index:0;
+}
+.project-media:after {
+  content:""; position:absolute; inset:0;
+  background:linear-gradient(180deg,transparent 45%,rgba(0,0,0,.7));
+  z-index:1; pointer-events:none;
+}
+.project-media small, .project-video-badge { z-index:2; }
+.project-video-badge {
+  position:absolute; right:20px; bottom:18px; color:#fff;
+  font-size:8px; letter-spacing:2px; border:1px solid rgba(255,255,255,.35);
+  padding:7px 9px; background:rgba(0,0,0,.35);
+}
+.project:hover .project-media-image,
+.project:hover .project-media-video { transform:scale(1.045); filter:saturate(1.08); }
+.project a { display:block; }

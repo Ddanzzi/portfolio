@@ -1,0 +1,27 @@
+# COMO TROCAR FOTOS E VÍDEOS DOS PROJETOS
+
+Você não precisa mais editar o HTML.
+
+1. Coloque suas imagens e vídeos em `assets/projetos/`.
+2. Abra `script.js`.
+3. No começo do arquivo, edite somente `PROJECTS`.
+
+Exemplo:
+```js
+{
+  title: "Minha campanha",
+  category: "Branding / Motion",
+  year: "2026",
+  image: "assets/projetos/campanha.jpg",
+  video: "assets/projetos/campanha.mp4",
+  link: "#"
+}
+```
+
+Se não tiver vídeo, use `video: ""`.
+
+Para adicionar um novo projeto, copie um bloco dentro de `PROJECTS`.
+O HTML é gerado automaticamente pelo JavaScript.
+
+Formatos recomendados: JPG/PNG/WebP para imagens e MP4 para vídeos.
+Use nomes de arquivos sem espaços ou acentos.
